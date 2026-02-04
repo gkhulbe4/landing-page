@@ -52,7 +52,7 @@ const Continuity = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="order-2 lg:order-1"
+          className="order-1 lg:order-2"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-calm-green border border-tale-accent/20 text-tale-dark text-xs font-bold uppercase tracking-wider mb-6">
             <Cloud size={12} className="text-tale-accent" />
@@ -84,9 +84,9 @@ const Continuity = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 + i * 0.1 }}
-                className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-gray-100/50 shadow-sm hover:shadow-md transition-shadow group hover:border-tale-accent/20"
+                className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-gray-100/50 shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="mt-1 w-2 h-2 rounded-full bg-tale-accent/50 group-hover:bg-tale-accent transition-colors" />
+                <div className="mt-1 h-2 w-2 rounded-full bg-teal-800/60 animate-pulse" />
                 <div>
                   <div className="text-sm font-bold text-tale-dark">
                     {item.title}
