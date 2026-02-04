@@ -1,188 +1,166 @@
 import { motion } from "framer-motion";
-import { Flower, Instagram, Twitter, Linkedin, Facebook } from "lucide-react";
-
-export const FinalCTA = () => {
-  return (
-    <section className="relative py-40 overflow-hidden flex items-center justify-center text-center bg-tale-dark text-white">
-      <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-tale-accent/50 via-tale-dark to-tale-dark" />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-7xl font-serif mb-8 tracking-tight"
-        >
-          Ready to reclaim your <br />
-          <span className="text-tale-accent italic">peace of mind?</span>
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-white/70 text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto"
-        >
-          Join the community of millions who have found their balance with Tale.
-          Start your free 14-day trial today, no credit card required.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <button className="bg-white text-tale-dark px-10 py-5 rounded-full text-lg font-medium hover:bg-tale-accent hover:text-tale-dark transition-colors shadow-2xl">
-            Get Started for Free
-          </button>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+import {
+  Flower,
+  Instagram,
+  Twitter,
+  Linkedin,
+  Facebook,
+  ArrowUpRight,
+  MapPin,
+  Globe,
+  ArrowRight,
+} from "lucide-react";
 
 export const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-white pt-24 pb-12 border-t border-gray-100">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-20">
-          <div className="lg:col-span-2">
-            <a href="#" className="flex items-center gap-2 mb-6 group">
-              <div className="bg-tale-dark text-white p-1.5 rounded-lg transition-transform group-hover:rotate-12">
-                <Flower size={20} fill="currentColor" />
+    <footer className="bg-[#F5F5F2] pt-32 pb-12 border-t border-gray-200/50 overflow-hidden relative">
+      <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-24">
+          <div className="md:col-span-12 lg:col-span-4">
+            <a href="#" className="flex items-center gap-3 mb-8 group">
+              <div className="bg-[#1C2321] text-white p-2.5 rounded-2xl group-hover:rotate-12 group-hover:bg-[#5E8C61] transition-all duration-500 shadow-xl shadow-black/5">
+                <Flower size={24} fill="currentColor" />
               </div>
-              <span className="text-2xl font-serif font-medium text-tale-dark tracking-tight">
+              <span className="text-4xl font-serif font-bold text-[#1C2321] tracking-tight">
                 Tale
               </span>
             </a>
-            <p className="text-gray-500 font-light mb-8 max-w-xs">
-              Designed to help you find calm in the chaos of modern life. Built
-              with love and science.
+            <p className="text-[#1C2321]/50 font-light text-xl leading-relaxed mb-10 max-w-sm">
+              We create beautiful, evidence-based tools to help you navigate the
+              complexities of contemporary life with grace.
             </p>
             <div className="flex gap-4">
-              {[Twitter, Instagram, Linkedin, Facebook].map((Icon, i) => (
-                <a
+              {[Instagram, Twitter, Linkedin, Facebook].map((Icon, i) => (
+                <motion.a
                   key={i}
                   href="#"
-                  className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-tale-dark hover:text-white transition-all"
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-[#1C2321] hover:bg-[#1C2321] hover:text-white transition-all shadow-md group border border-white/50"
                 >
-                  <Icon size={18} />
-                </a>
+                  <Icon
+                    size={20}
+                    className="transition-transform group-hover:rotate-6"
+                  />
+                </motion.a>
               ))}
             </div>
           </div>
 
-          <div>
-            <h4 className="font-bold text-tale-dark mb-6">Product</h4>
-            <ul className="space-y-4 text-gray-500 font-light text-sm">
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-tale-accent transition-colors"
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-tale-accent transition-colors"
-                >
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-tale-accent transition-colors"
-                >
-                  Web App
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-tale-accent transition-colors"
-                >
-                  For Business
-                </a>
-              </li>
+          <div className="md:col-span-4 lg:col-span-2">
+            <h4 className="text-[10px] font-bold text-[#1C2321] uppercase tracking-[0.2em] mb-10 opacity-40">
+              Platform
+            </h4>
+            <ul className="space-y-5">
+              {[
+                "Methodology",
+                "Sound Library",
+                "Pricing Plans",
+                "Web Experience",
+              ].map((item) => (
+                <li key={item}>
+                  <a
+                    href="#"
+                    className="text-[#1C2321]/60 hover:text-[#5E8C61] transition-all flex items-center gap-1 group font-medium decoration-[#5E8C61]/30 hover:underline underline-offset-8 decoration-2"
+                  >
+                    {item}
+                    <ArrowUpRight
+                      size={14}
+                      className="opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-x-1 transition-all"
+                    />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-bold text-tale-dark mb-6">Resources</h4>
-            <ul className="space-y-4 text-gray-500 font-light text-sm">
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-tale-accent transition-colors"
-                >
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-tale-accent transition-colors"
-                >
-                  Community
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-tale-accent transition-colors"
-                >
-                  Help Center
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-tale-accent transition-colors"
-                >
-                  Contact
-                </a>
-              </li>
+          <div className="md:col-span-4 lg:col-span-2">
+            <h4 className="text-[10px] font-bold text-[#1C2321] uppercase tracking-[0.2em] mb-10 opacity-40">
+              Company
+            </h4>
+            <ul className="space-y-5">
+              {["Our Story", "Research", "Community", "Newsroom"].map(
+                (item) => (
+                  <li key={item}>
+                    <a
+                      href="#"
+                      className="text-[#1C2321]/60 hover:text-[#5E8C61] transition-all font-medium decoration-[#5E8C61]/30 hover:underline underline-offset-8 decoration-2"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ),
+              )}
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
-            <h4 className="font-bold text-tale-dark mb-6">Stay in the loop</h4>
-            <p className="text-gray-500 font-light text-sm mb-4">
-              Receive mindfulness tips and updates directly to your inbox.
-            </p>
-            <form className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-tale-accent bg-gray-50"
-              />
-              <button className="bg-tale-dark text-white px-6 py-3 rounded-xl font-medium hover:bg-black transition-colors">
-                Subscribe
-              </button>
-            </form>
+          <div className="md:col-span-4 lg:col-span-4">
+            <div className="bg-white p-10 rounded-[40px] border border-white shadow-2xl shadow-black/[0.03] relative overflow-hidden group">
+              <div className="relative z-10">
+                <h4 className="text-xl font-serif text-[#1C2321] mb-3">
+                  Newsletter
+                </h4>
+                <p className="text-[#1C2321]/40 text-sm font-light mb-8 max-w-[200px]">
+                  Bite-sized serenity delivered to your mailbox weekly.
+                </p>
+                <form className="relative">
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    className="w-full bg-[#F5F5F2] px-6 py-4 rounded-2xl border border-transparent focus:bg-white focus:border-[#5E8C61]/30 focus:outline-none text-sm transition-all"
+                  />
+                  <button className="absolute right-2 top-2 bottom-2 bg-[#1C2321] hover:bg-[#5E8C61] text-white px-5 rounded-xl transition-all hover:shadow-lg active:scale-95">
+                    <ArrowRight size={18} />
+                  </button>
+                </form>
+              </div>
+              <div className="absolute top-[-20%] right-[-20%] w-40 h-40 bg-[#5E8C61]/5 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000" />
+            </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 font-light">
-          <p>© 2024 Tale Wellness Inc. All rights reserved.</p>
-          <div className="flex gap-8">
-            <a href="#" className="hover:text-tale-dark transition-colors">
+        <div className="pt-12 border-t border-gray-200/50 flex flex-col lg:flex-row justify-between items-center gap-10">
+          <div className="flex flex-wrap justify-center gap-8 items-center text-[10px] font-bold uppercase tracking-[0.2em] text-[#1C2321]/30">
+            <p>© {currentYear} Tale Wellness Inc.</p>
+            <div className="hidden sm:flex items-center gap-2">
+              <MapPin size={10} />
+              <span>SF • LON • TOK</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Globe size={10} />
+              <span>International Edition</span>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-[#1C2321]/30">
+            <a href="#" className="hover:text-[#5E8C61] transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-tale-dark transition-colors">
-              Terms of Service
+            <a href="#" className="hover:text-[#5E8C61] transition-colors">
+              Terms of Use
             </a>
-            <a href="#" className="hover:text-tale-dark transition-colors">
-              Cookie Settings
+            <a href="#" className="hover:text-[#5E8C61] transition-colors">
+              Accessibility
             </a>
           </div>
+
+          <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#5E8C61]">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5E8C61] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#5E8C61]"></span>
+            </span>
+            System: Normal
+          </div>
         </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 mt-20 opacity-5 pointer-events-none select-none">
+        <h1 className="text-[15vw] font-serif text-[#1C2321] leading-none text-center tracking-tighter">
+          Tale
+        </h1>
       </div>
     </footer>
   );

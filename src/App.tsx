@@ -5,7 +5,7 @@ import WebExperience from "./components/WebExperience";
 import Journey from "./components/Journey";
 import Trust from "./components/Trust";
 import Continuity from "./components/Continuity";
-import { FinalCTA, Footer } from "./components/Footer";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
@@ -17,7 +17,6 @@ function App() {
       <Features />
       <Trust />
       <Continuity />
-      <FinalCTA />
       <Footer />
     </div>
   );
