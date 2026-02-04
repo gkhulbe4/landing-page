@@ -8,23 +8,29 @@
   --font-sans: "Outfit", sans-serif;
   --font-serif: "Libre Baskerville", serif;
 
-  --color-calm-green: #f2f7f2;
-  --color-calm-blue: #f0f7ff;
-  --color-calm-neutral: #fdfaf7;
-  --color-tale-dark: #1a3a3a;
-  --color-tale-accent: #a5b4fc;
+  /* Nature Inspired Palette */
+  --color-calm-green: #eef5f2; /* Very pale mint/sage background */
+  --color-calm-blue: #e8f3f1; /* misty blue-green */
+  --color-calm-neutral: #faf9f6; /* Off-white / Stone */
+
+  --color-tale-dark: #1e2f23; /* Deep Forest Green */
+  --color-tale-accent: #5e8c61; /* Fresh Fern/Sage Green */
+  --color-tale-warm: #e3d5ca; /* Sand/Warm beige */
 
   --radius-4xl: 2rem;
   --radius-5xl: 3rem;
 
-  --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.04);
-  --shadow-premium-hover: 0 30px 70px rgba(0, 0, 0, 0.08);
+  --shadow-premium: 0 20px 50px rgba(30, 47, 35, 0.05); /* Tinted shadow */
+  --shadow-premium-hover: 0 30px 70px rgba(30, 47, 35, 0.1);
 
-  --color-background: oklch(1 0 0);
-  --color-foreground: oklch(0.145 0 0);
+  --color-background: var(--color-calm-neutral);
+  --color-foreground: var(--color-tale-dark);
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-white text-foreground font-sans selection:bg-indigo-100;
   }

@@ -1,204 +1,208 @@
-import React from "react";
+import { motion } from "framer-motion";
 import {
   LayoutDashboard,
   Calendar,
   BarChart3,
   Settings,
   Leaf,
-  Users,
   Moon,
   Wind,
   Brain,
   Waves,
   Play,
   MoreHorizontal,
-  Sparkles,
   Sun,
   TreePine,
+  ArrowRight,
+  Heart,
+  Search,
 } from "lucide-react";
+
+const colors = {
+  bg: "bg-[#F5F5F2]",
+  dark: "text-[#1C2321]",
+  darkBg: "bg-[#1C2321]",
+  accent: "text-[#5E8C61]",
+  accentBg: "bg-[#5E8C61]",
+  accentLight: "bg-[#E9EFE9]",
+  white: "bg-white",
+};
+
+const CompactMoodBtn = ({ icon: Icon, label, selected }: any) => (
+  <button
+    className={`flex items-center gap-2 px-3 py-2 rounded-xl border transition-all ${
+      selected
+        ? "bg-[#1C2321] text-white border-[#1C2321]"
+        : "bg-white border-gray-100 text-gray-400 hover:border-[#5E8C61] hover:text-[#5E8C61]"
+    }`}
+  >
+    <Icon size={14} />
+    <span className="text-[10px] font-bold uppercase tracking-wider">
+      {label}
+    </span>
+  </button>
+);
+
+const MiniCard = ({ icon: Icon, label, count, color }: any) => (
+  <motion.div
+    whileHover={{ y: -2 }}
+    className="bg-white p-4 rounded-2xl border border-gray-100 flex flex-col justify-between h-28 group cursor-pointer hover:border-[#5E8C61]/30 transition-colors"
+  >
+    <div className="flex justify-between items-start">
+      <div className={`p-2 rounded-full bg-opacity-10 ${color.bg}`}>
+        <Icon size={16} className={color.text} />
+      </div>
+      <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+        <Play size={12} className="text-[#1C2321]" />
+      </div>
+    </div>
+    <div>
+      <h4 className="text-sm font-bold text-[#1C2321]">{label}</h4>
+      <p className="text-[10px] text-gray-400 font-medium">{count} sessions</p>
+    </div>
+  </motion.div>
+);
 
 const Dashboard = () => {
   return (
-    <div className="bg-calm-neutral h-full w-full p-4 md:p-6 font-sans text-tale-dark">
-      <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-6">
-        <div className="flex flex-col gap-1">
-          <h1 className="text-3xl md:text-4xl font-serif font-medium text-tale-dark">
-            Good morning, Sarah
-          </h1>
-          <p className="text-gray-500 font-light flex items-center gap-2">
-            Time to find your center.{" "}
-            <span className="text-orange-400">
-              <Sparkles size={16} />
-            </span>
+    <div
+      className={`h-full ${colors.bg} p-4 md:p-6 font-sans text-[#1C2321] selection:bg-[#5E8C61] selection:text-white`}
+    >
+      <header className="max-w-6xl mx-auto flex justify-between items-center mb-6">
+        <div>
+          <h1 className="text-2xl font-serif text-[#1C2321]">Hello, Sarah</h1>
+          <p className="text-xs text-gray-400 font-medium tracking-wide">
+            Tuesday, 4 Feb
           </p>
         </div>
 
-        <div className="flex items-center gap-4 bg-white p-2 rounded-full shadow-sm border border-gray-100">
-          <button className="flex items-center gap-2 px-4 py-2 bg-tale-dark text-white rounded-full text-sm font-medium transition-transform hover:scale-105">
-            <LayoutDashboard size={16} />
-            <span>Overview</span>
+        <div className="flex items-center gap-3">
+          <div className="hidden md:flex items-center bg-white rounded-full px-1 py-1 border border-gray-100 shadow-sm">
+            {[LayoutDashboard, Calendar, BarChart3].map((Icon, i) => (
+              <button
+                key={i}
+                className={`p-2 rounded-full ${i === 0 ? "bg-[#1C2321] text-white" : "text-gray-400 hover:text-[#1C2321]"}`}
+              >
+                <Icon size={14} />
+              </button>
+            ))}
+          </div>
+          <button className="w-9 h-9 rounded-full bg-white border border-gray-100 flex items-center justify-center text-[#1C2321]">
+            <Settings size={14} />
           </button>
-          <button className="p-2 text-gray-400 hover:text-tale-dark hover:bg-gray-50 rounded-full transition-colors">
-            <Calendar size={20} />
-          </button>
-          <button className="p-2 text-gray-400 hover:text-tale-dark hover:bg-gray-50 rounded-full transition-colors">
-            <BarChart3 size={20} />
-          </button>
-          <button className="p-2 text-gray-400 hover:text-tale-dark hover:bg-gray-50 rounded-full transition-colors">
-            <Settings size={20} />
-          </button>
-          <div className="w-px h-6 bg-gray-200 mx-1"></div>
-          <div className="w-8 h-8 bg-linear-to-br from-tale-accent to-indigo-400 rounded-full flex items-center justify-center text-white font-serif text-sm">
+          <div className="w-9 h-9 rounded-full bg-[#5E8C61] text-white flex items-center justify-center text-xs font-serif">
             S
           </div>
         </div>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <div className="lg:col-span-8 space-y-6">
-          <div className="relative overflow-hidden bg-linear-to-br from-tale-accent to-indigo-400 rounded-4xl p-8 text-white shadow-xl transition-transform hover:scale-[1.01] duration-500">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-tale-accent/20 rounded-full blur-2xl -ml-10 -mb-10 pointer-events-none"></div>
-
-            <div className="relative z-10">
-              <div className="flex justify-between items-start mb-12">
-                <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-xs font-medium mb-3">
-                    <Leaf size={12} className="text-tale-accent" />
-                    <span>Daily Recommendation</span>
-                  </div>
-                  <h2 className="text-3xl md:text-4xl font-serif leading-tight mb-2">
-                    5-Minute Anxiety <br /> Relief
-                  </h2>
-                  <p className="text-white/60 font-light">
-                    Restore balance with guided rhythmic breathing.
-                  </p>
-                </div>
-                <div className="hidden sm:flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/10">
-                  <Wind size={32} className="text-white/80" />
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <button className="flex items-center gap-3 bg-white text-tale-dark pl-5 pr-6 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors">
-                    <Play size={18} fill="currentColor" />
-                    Begin Session
-                  </button>
-                  <span className="text-sm text-white/50 font-light hidden sm:inline-block">
-                    ~ 5 mins remaining
-                  </span>
-                </div>
-
-                <div className="flex -space-x-3">
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className="w-8 h-8 rounded-full border-2 border-tale-dark bg-white/20 backdrop-blur flex items-center justify-center text-[10px]"
-                    >
-                      <Users size={12} />
-                    </div>
-                  ))}
-                  <div className="w-8 h-8 rounded-full border-2 border-tale-dark bg-tale-accent flex items-center justify-center text-[10px] font-bold text-tale-dark">
-                    +2k
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-4 pb-4">
+        <div className="md:col-span-8 flex flex-col gap-4">
+          <div className="flex items-center gap-3 overflow-x-auto pb-1 scrollbar-hide">
+            <span className="text-xs font-serif italic text-gray-400 mr-2 shrink-0">
+              I am feeling...
+            </span>
+            <CompactMoodBtn icon={Moon} label="Calm" selected={true} />
+            <CompactMoodBtn icon={Brain} label="Focus" />
+            <CompactMoodBtn icon={Waves} label="Tired" />
+            <CompactMoodBtn icon={Heart} label="Grateful" />
           </div>
 
-          {/* Quick Actions Grid */}
-          <div>
-            <div className="flex justify-between items-end mb-6">
-              <h3 className="text-xl font-serif text-tale-dark">Explore</h3>
-              <button className="text-sm text-gray-400 hover:text-tale-dark transition-colors">
-                View Library
-              </button>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                {
-                  icon: Brain,
-                  label: "Focus",
-                  color: "bg-orange-100",
-                  text: "text-orange-700",
-                },
-                {
-                  icon: Moon,
-                  label: "Sleep",
-                  color: "bg-indigo-100",
-                  text: "text-indigo-700",
-                },
-                {
-                  icon: Waves,
-                  label: "Sounds",
-                  color: "bg-teal-100",
-                  text: "text-teal-700",
-                },
-                {
-                  icon: Wind,
-                  label: "Breath",
-                  color: "bg-blue-100",
-                  text: "text-blue-700",
-                },
-              ].map((item, idx) => (
-                <div
-                  key={idx}
-                  className="group bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all cursor-pointer hover:-translate-y-1"
-                >
-                  <div
-                    className={`w-12 h-12 ${item.color} rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110`}
-                  >
-                    <item.icon size={24} className={item.text} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-[#1C2321] rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between md:col-span-2 min-h-[220px]"
+            >
+              <div className="relative z-10 flex justify-between items-start">
+                <div className="max-w-xs">
+                  <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-white/10 backdrop-blur-md text-[9px] font-bold uppercase tracking-widest text-[#5E8C61] mb-3">
+                    <Leaf size={10} />
+                    <span>Recommended</span>
                   </div>
-                  <h4 className="font-medium text-gray-800">{item.label}</h4>
-                  <p className="text-xs text-gray-400 mt-1">32 sessions</p>
+                  <h2 className="text-2xl md:text-3xl font-serif text-white leading-tight mb-2">
+                    Deep Breath{" "}
+                    <span className="italic text-gray-500 font-normal">
+                      Release
+                    </span>
+                  </h2>
+                  <p className="text-gray-400 text-xs leading-relaxed max-w-[200px]">
+                    Lower cortisol levels in just 8 minutes.
+                  </p>
                 </div>
-              ))}
+
+                <div className="w-20 h-20 rounded-full border border-dashed border-white/20 flex items-center justify-center animate-[spin_10s_linear_infinite]">
+                  <Wind size={24} className="text-[#5E8C61]" />
+                </div>
+              </div>
+
+              <div className="relative z-10 flex items-center gap-4 mt-6">
+                <button className="bg-white text-[#1C2321] px-5 py-2 rounded-full text-xs font-bold flex items-center gap-2 hover:bg-[#5E8C61] hover:text-white transition-colors">
+                  <Play size={12} fill="currentColor" /> Start
+                </button>
+                <span className="text-[10px] text-gray-500 font-medium">
+                  +2.4k others here
+                </span>
+              </div>
+
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#5E8C61]/10 rounded-full blur-[60px] pointer-events-none -mr-10 -mt-10" />
+            </motion.div>
+
+            <div className="md:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-4">
+              <MiniCard
+                icon={Brain}
+                label="Focus"
+                count={24}
+                color={{ bg: "bg-orange-100", text: "text-orange-600" }}
+              />
+              <MiniCard
+                icon={TreePine}
+                label="Nature"
+                count={42}
+                color={{ bg: "bg-[#E9EFE9]", text: "text-[#5E8C61]" }}
+              />
+              <MiniCard
+                icon={Waves}
+                label="Sleep"
+                count={18}
+                color={{ bg: "bg-blue-50", text: "text-blue-500" }}
+              />
+              <button className="bg-white border border-dashed border-gray-200 rounded-2xl flex flex-col items-center justify-center gap-2 text-gray-300 hover:border-[#5E8C61] hover:text-[#5E8C61] transition-colors h-28">
+                <Search size={18} />
+                <span className="text-[10px] font-bold uppercase tracking-widest">
+                  Explore
+                </span>
+              </button>
             </div>
           </div>
         </div>
 
-        <div className="lg:col-span-4 space-y-8">
-          <div className="bg-white p-6 rounded-4xl shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-gray-50">
+        <div className="md:col-span-4 flex flex-col gap-4">
+          <div className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm flex-1 min-h-[220px]">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="font-serif text-lg text-tale-dark">
-                Your Journey
-              </h3>
-              <MoreHorizontal
-                size={20}
-                className="text-gray-300 cursor-pointer"
-              />
-            </div>
-
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-full bg-calm-green flex items-center justify-center text-xl">
-                <Calendar size={24} />
-              </div>
-              <div>
-                <div className="text-2xl font-serif font-medium text-tale-dark">
-                  12 Days
-                </div>
-                <div className="text-xs text-gray-500 uppercase tracking-widest font-medium">
-                  Streak
-                </div>
+              <h3 className="font-serif text-lg text-[#1C2321]">Growth</h3>
+              <div className="flex gap-1">
+                <span className="text-[10px] font-bold bg-[#E9EFE9] text-[#5E8C61] px-2 py-0.5 rounded-full">
+                  +15%
+                </span>
               </div>
             </div>
 
-            <div className="h-40 flex items-end justify-between gap-2">
-              {[45, 70, 30, 85, 50, 65, 40].map((h, i) => (
+            <div className="flex items-end justify-between gap-1 h-28">
+              {[40, 65, 30, 90, 55, 75, 50].map((h, i) => (
                 <div
                   key={i}
-                  className="flex flex-col items-center gap-2 group w-full"
+                  className="flex flex-col items-center gap-2 flex-1 group h-full"
                 >
-                  <div className="relative w-full rounded-full bg-calm-green h-32 overflow-hidden">
-                    <div
-                      className="absolute bottom-0 left-0 right-0 bg-indigo-200 transition-all duration-1000 group-hover:bg-indigo-400"
-                      style={{ height: `${h}%` }}
+                  <div className="w-full h-full relative flex items-end justify-center">
+                    <div className="w-1.5 md:w-2 bg-[#F5F5F2] rounded-full h-full absolute inset-0 mx-auto" />
+                    <motion.div
+                      initial={{ height: 0 }}
+                      animate={{ height: `${h}%` }}
+                      className={`w-1.5 md:w-2 relative z-10 ${i === 3 ? "bg-[#5E8C61]" : "bg-[#1C2321]/10 group-hover:bg-[#5E8C61]/50"} transition-colors rounded-full`}
                     />
                   </div>
-                  <span className="text-[10px] font-medium text-gray-400">
+                  <span className="text-[9px] font-bold text-gray-300">
                     {["M", "T", "W", "T", "F", "S", "S"][i]}
                   </span>
                 </div>
@@ -206,33 +210,31 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Recent List */}
-          <div className="bg-white p-6 rounded-4xl shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-gray-50">
-            <h3 className="font-serif text-lg text-tale-dark mb-6">
-              Recent History
-            </h3>
-            <div className="space-y-4">
+          <div className="bg-[#1C2321] p-5 rounded-3xl text-white shadow-xl shadow-[#1C2321]/10">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-serif text-lg">Recent</h3>
+              <ArrowRight size={14} className="opacity-50" />
+            </div>
+
+            <div className="space-y-3">
               {[
-                { title: "Morning Clarity", time: "2 hrs ago", icon: Sun },
+                { title: "Morning Clarity", time: "2h ago", icon: Sun },
                 { title: "Deep Sleep 101", time: "Yesterday", icon: Moon },
-                { title: "Nature Sounds", time: "Yesterday", icon: TreePine },
-              ].map((item, idx) => (
+                { title: "Rain Sounds", time: "Yesterday", icon: Waves },
+              ].map((item, i) => (
                 <div
-                  key={idx}
-                  className="flex items-center gap-4 p-3 hover:bg-calm-neutral rounded-2xl transition-colors cursor-pointer"
+                  key={i}
+                  className="flex items-center gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors cursor-pointer group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-calm-green flex items-center justify-center text-lg text-tale-dark">
-                    <item.icon size={20} />
+                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#5E8C61]">
+                    <item.icon size={14} />
                   </div>
-                  <div>
-                    <div className="font-medium text-tale-dark text-sm">
+                  <div className="flex-1 min-w-0">
+                    <div className="text-xs font-bold truncate group-hover:text-[#5E8C61] transition-colors">
                       {item.title}
                     </div>
-                    <div className="text-xs text-gray-400">{item.time}</div>
-                  </div>
-                  <div className="ml-auto">
-                    <div className="w-6 h-6 rounded-full border border-gray-100 flex items-center justify-center text-gray-300">
-                      <Play size={10} fill="currentColor" />
+                    <div className="text-[9px] text-white/40 uppercase tracking-wider">
+                      {item.time}
                     </div>
                   </div>
                 </div>

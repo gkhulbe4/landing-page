@@ -2,7 +2,7 @@ import { AppleIcon } from "./ui/AppleIcon";
 
 const Hero = () => {
   return (
-    <section className="relative min-screen w-full overflow-hidden">
+    <section className="relative min-h-screen w-full overflow-hidden flex flex-col pt-10 lg:pt-20">
       <div
         className="absolute inset-0 z-0 bg-bottom bg-no-repeat bg-cover"
         style={{ backgroundImage: "url('/grass.png')" }}
@@ -20,7 +20,7 @@ const Hero = () => {
             anywhere.
           </p>
 
-          <button className="mx-auto flex items-center gap-3 rounded-full bg-black px-6 py-2 my-8 text-white shadow-2xl transition-all hover:scale-105 active:scale-95">
+          <button className="mx-auto flex items-center gap-3 rounded-full bg-tale-dark px-6 py-2 my-8 text-white shadow-premium transition-all hover:scale-105 active:scale-95">
             <AppleIcon />
             <span className="text-xs font-light">Download Now</span>
           </button>
